@@ -15,7 +15,7 @@ User-Agent\
   FileService_Integration_V2.1\
 \
 Authorization*Required\
-  QB-USER-TOKEN b5dge5_ph4g_0_c9g7fwvu96r3ucm42sf6dzpc36s\
+  ************************************************\
 \
 \
 -----------------------------------------------\
@@ -88,7 +88,7 @@ Javascript Code Sample:\
 var headers = \{\
   	'QB-Realm-Hostname': 'gosales.quickbase.com',\
 	'User-Agent': 'FileService_Integration_V2.1',\
-	'Authorization': 'QB-USER-TOKEN b5dge5_ph4g_0_c9g7fwvu96r3ucm42sf6dzpc36s',\
+	'Authorization': '************************************************',\
     'Content-Type': 'application/json'\
 \}\
 var body = \{"from":"bsazkzsm2","select":[21],"where":"\{33.CT.'6789'\}","sortBy":[\{"fieldId":3,"order":"ASC"\}],"groupBy":[\{"fieldId":33,"grouping":"equal-values"\}],"options":\{"skip":0,"top":0,"compareWithAppLocalTime":false\}\}\
@@ -163,7 +163,7 @@ Javascript Code Sample:\
 var headers = \{\
   	'QB-Realm-Hostname': 'gosales.quickbase.com',\
 	'User-Agent': 'FileService_Integration_V2.1',\
-	'Authorization': 'QB-USER-TOKEN b5dge5_ph4g_0_c9g7fwvu96r3ucm42sf6dzpc36s',\
+	'Authorization': '************************************************',\
     'Content-Type': 'application/json'\
 \}\
 var body = \{"to":"bsazk77pd","data":[\{"7":\{"value":"Customer Name"\},"8":\{"value":"testemail@test.com"\},"9":\{"value":"5558887777"\},"15":\{"value":"67890"\}\}],"fieldsToReturn":[7]\}\
@@ -240,4 +240,25 @@ Response \
   \}\
 \}\
 \
-
+Javascript Code Sample:\
+\
+var headers = \{\
+  	'QB-Realm-Hostname': 'gosales.quickbase.com',\
+	'User-Agent': 'FileService_Integration_V2.1',\
+	'Authorization': '************************************************',\
+    'Content-Type': 'application/json'\
+\}\
+var body = \{"to":"bsa26ztqb","data":[\{"7":\{"value":5\},"8":\{"value":"This is a test Message"\},"9":\{"value":"John Doe"\},"10":\{"value":"5558887777"\},"11":\{"value":"Test@test.com"\},"14":\{"value":"67890"\}\}],"fieldsToReturn":[7]\}\
+\
+const xmlHttp = new XMLHttpRequest();\
+xmlHttp.open('POST', 'https://api.quickbase.com/v1/records', true);\
+for (const key in headers) \{\
+  xmlHttp.setRequestHeader(key, headers[key]);\
+\}\
+xmlHttp.onreadystatechange = function() \{\
+  if (xmlHttp.readyState === XMLHttpRequest.DONE) \{\
+    console.log(xmlHttp.responseText);\
+  \}\
+\};\
+\
+xmlHttp.send(JSON.stringify(body));}
