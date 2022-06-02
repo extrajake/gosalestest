@@ -26,3 +26,37 @@ xmlHttp.onreadystatechange = function() {
 };
 
 xmlHttp.send(JSON.stringify(body));
+
+xbody = {
+  data: [
+    {
+      "21": {
+        value:
+          "<tr><img  Alt=\"Manny Pinheiro67890\" ' src=&#039;https://gosales.quickbase.com/up/bsazkzsm2/a/r1/e22'/></tr></table>"
+      },
+      "33": {
+        value: "67890"
+      }
+    }
+  ],
+  fields: [
+    {
+      id: 21,
+      label: "Rep Card",
+      type: "rich-text"
+    },
+    {
+      id: 33,
+      label: "Agent ID",
+      type: "text"
+    }
+  ],
+  metadata: {
+    numFields: 2,
+    numRecords: 1,
+    skip: 0,
+    totalRecords: 1
+  }
+};
+
+console.log(xbody.data[(0.21).value]);
