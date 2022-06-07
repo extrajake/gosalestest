@@ -8,8 +8,8 @@ var headers = {
 var body = {
   from: "bsazkzsm2",
   select: [6, 15, 17, 21],
-  // where: "{33.CT.'6789'}",
-  where: "{33.CT.'12345'}",
+  where: "{33.CT.'20202'}",
+  // where: "{33.CT.'12345'}",
   sortBy: [{ fieldId: 3, order: "ASC" }],
   // groupBy: [{ fieldId: 33, grouping: "equal-values" }],
   options: { skip: 0, top: 0, compareWithAppLocalTime: false }

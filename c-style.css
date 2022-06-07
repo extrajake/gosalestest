@@ -252,6 +252,11 @@ ul {
   );
 }
 
+.job-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .job-overview {
   -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
   box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
