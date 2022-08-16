@@ -104,12 +104,20 @@ body {
   margin-top: auto;
 }
 
+.mountain-background {
+  background-color: #35a0c7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23e51769' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23333333' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23c33763' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%235c5c5c' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23a1565d' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23858585' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%237e7656' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23adadad' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%235c9550' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23d6d6d6' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%233ab54a' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23ffffff' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .user img {
   border-radius: 50%;
   width: 42px;
   height: 40px;
   margin-right: 10px;
 }
+
 .user-info h5 {
   margin: 0;
 }
@@ -119,6 +127,81 @@ body {
 .api-content {
   height: 500px;
   width: 500px;
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 10px;
+  font-size: 20px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #35a0c7;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #35a0c7;
+}
+
+.go-btn {
+  box-shadow: 2px 2px 20px rgb(196 204 245 / 35%);
+  color: #333333;
+}
+
+.go-logo {
+  max-height: 50px;
 }
 
 /* body {
