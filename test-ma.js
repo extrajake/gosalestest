@@ -44,8 +44,8 @@ xmlHttp.onreadystatechange = function() {
   }
 };
 
-$(":radio").change(function() {
-  console.log("New star rating: " + this.value);
-});
+// $(":radio").change(function() {
+//   console.log("New star rating: " + this.value);
+// });
 
 xmlHttp.send(JSON.stringify(body));

@@ -54,7 +54,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+
   padding: 20px;
   min-height: 250px;
 }
@@ -88,6 +88,9 @@ body {
 }
 .tag-pink {
   background-color: #e51769;
+}
+.text-w {
+  color: #fff;
 }
 
 .w {
