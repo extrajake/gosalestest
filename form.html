@@ -31,7 +31,7 @@
                       </div>
          
           <div class="card-body">
-            <span class="tag tag-teal text-center">Sales Rep</span>
+            <span class="tag tag-teal text-center h6">Sales Rep</span>
             <h4 id="rep-name" class="mt-2">
               Christian Dizon
             </h4>
@@ -41,7 +41,7 @@
                 <div>
                     <h6>Rep Rating</h6>
                 </div>
-            <form class="rating mt-2">
+            <form class="rating mt-2" name="testform" method="POST" encType="multipart/form-data" action="https://gosales.quickbase.com/db/bsazkzsm2?act=API_AddRecord" >
                 
                 <label>
                   <input type="radio" name="stars" value="1" />
@@ -73,7 +73,7 @@
                   <span class="icon">★</span>
                   <span class="icon">★</span>
                 </label>
-              </form>
+              
             </div>
 
             <div class="form-group">
@@ -83,7 +83,7 @@
 
             <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="email" class="form-control" id="formName" aria-describedby="emailHelp" placeholder="Name">
+                    <input type="text" class="form-control" id="formName" aria-describedby="emailHelp" placeholder="Name" name="_fid_33">
             </div>
 
             <div class="form-group">
@@ -96,22 +96,25 @@
                     <textarea class="form-control" id="formComments" rows="3"></textarea>
                   </div>
 
-            <div class="form-group row">
-                    <div class="col-sm-10">
+            <div class="form-group">
+                    <div class="col-sm-12 text-center">
                       <button type="submit" class="btn tag-teal text-w">Submit</button>
                     </div>
                   </div>
 
+                </form>
 
 
-<div class="m-auto pt-3">
+
+<div class="m-auto pt-1">
         <img class="go-logo" src="img/Go Sales logo_colour hor-edit.jpg" alt="user" />
     </div>
 
 </div>
 </section>
 
-<script src="test-ma.js"></script>
+<!-- <script src="test-ma.js"></script> -->
+<script src="form-submit.js"></script>
 <script>
   const img = document.querySelector("img");
 </script>
