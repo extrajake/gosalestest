@@ -45,15 +45,25 @@ xmlHttp.onreadystatechange = function() {
     // document.getElementById("phone").innerHTML = phone;
 
     const listElement = (image, name, phone) => `
+
+    <div class="row flex-row p-3">
     <div
-       class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex"
+       class="job-box img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex"
        >
        ${image}
        </div>
        <div class="job-content">
        <h5 class="text-center text-md-left">${name}</h5>
        <span class="taghome tag-teal my-2">${phone}</span>
+       <div class="job-right my-4 flex-shrink-0">
+                  <a
+                    href="cards.html"
+                    class="btn d-block w-100 d-sm-inline-block btn-light"
+                    >Go to ${name}</a
+                  >
+                </div>
        </div>
+   </div>
    </div>
    `;
 
@@ -68,14 +78,9 @@ xmlHttp.onreadystatechange = function() {
       })
       .join("");
 
-    document.getElementById("name-list").innerHTML = items;
+    document.getElementById("filter-result").innerHTML = items;
 
     console.log(Object.values(response));
   }
 };
-
-// $(":radio").change(function() {
-//   console.log("New star rating: " + this.value);
-// });
-
 xmlHttp.send(JSON.stringify(body));
