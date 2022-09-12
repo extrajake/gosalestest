@@ -8,10 +8,10 @@ var headers = {
 var body = {
   from: "bsazkzsm2",
   select: [6, 15, 17, 21],
-  // where: "{33.CT.'6789'}",
-  where: "{33.CT.'12345'}",
+  where: "{33.CT.'6789'}",
+  // where: "{33.CT.'12345'}",
   sortBy: [{ fieldId: 3, order: "ASC" }],
-  //   groupBy: [{ fieldId: 33, grouping: "equal-values" }],
+  // groupBy: [{ fieldId: 33, grouping: "equal-values" }],
   options: { skip: 0, top: 0, compareWithAppLocalTime: false }
 };
 
@@ -28,8 +28,24 @@ xmlHttp.onreadystatechange = function() {
   if (xmlHttp.readyState === XMLHttpRequest.DONE) {
     // console.log(xmlHttp.responseText);
     console.log(JSON.parse(xmlHttp.response));
+
     const response = JSON.parse(xmlHttp.response);
+    const image = response.data[0]["21"].value;
+    const phone = response.data[0]["17"].value;
+    const name = response.data[0]["6"].value.name;
+    const qrcode = response.data[0]["15"].value;
+
+    // console.log(image);
+
+    document.getElementById("rep-img").innerHTML = image;
+    document.getElementById("rep-name").innerHTML = name;
+    document.getElementById("qrcode").innerHTML = qrcode;
+    document.getElementById("phone").innerHTML = phone;
   }
 };
+
+// $(":radio").change(function() {
+//   console.log("New star rating: " + this.value);
+// });
 
 xmlHttp.send(JSON.stringify(body));

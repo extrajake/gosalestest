@@ -26,61 +26,85 @@ for (const key in headers) {
 
 xmlHttp.onreadystatechange = function() {
   if (xmlHttp.readyState === XMLHttpRequest.DONE) {
-    // console.log(xmlHttp.responseText);
-    console.log(JSON.parse(xmlHttp.response));
-
     const response = JSON.parse(xmlHttp.response);
-    const image = response.data[0]["21"].value;
-    const phone = response.data[0]["17"].value;
-    const name = response.data[0]["6"].value.name;
-    const qrcode = response.data[0]["15"].value;
+    var return_arr = [];
+    var html = "";
+    response.data.forEach(item => {
+      var valueToPush = {};
+      if (item[6].value) {
+        var id = item[6].value
+          ? item[6].value.id
+          : new Date().getTime().toString();
+        var name = item[6].value ? item[6].value.name : "";
+        var email = item[6].value ? item[6].value.email : "";
+        var image = item[21].value ? item[21].value : "";
+        var phone = item[17].value ? item[17].value : "";
+        var qrcode = item[15].value ? item[15].value : "";
+        valueToPush["id"] = id;
+        valueToPush["email"] = email;
+        valueToPush["name"] = name;
+        valueToPush["qrcode"] = qrcode;
+        valueToPush["phone"] = phone;
+        valueToPush["image"] = image;
+        return_arr.push(valueToPush);
+        html += `<div class="row flex-row p-3">
+            <div
+              class="job-box img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex"
+              >
+              ${image}
+              </div>
+              <div class="job-content">
+              <h5 class="text-center text-md-left">${name}</h5>
+              <span class="taghome tag-teal my-2">${phone}</span>
+              <div class="job-right my-4 flex-shrink-0">
+                          <a
+                            href="cards/?id=${id}"
+                            class="btn d-block w-100 d-sm-inline-block btn-light"
+                            >Go to ${name}</a
+                          >
+                        </div>
+              </div>
+          </div>
+          </div>
+          `;
+      }
+    });
+    localStorage.setItem("data", JSON.stringify(return_arr));
+    //   const listElement = (image, name, phone) => `
 
-    // console.log(image);
+    //   <div class="row flex-row p-3">
+    //   <div
+    //     class="job-box img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex"
+    //     >
+    //     ${image}
+    //     </div>
+    //     <div class="job-content">
+    //     <h5 class="text-center text-md-left">${name}</h5>
+    //     <span class="taghome tag-teal my-2">${phone}</span>
+    //     <div class="job-right my-4 flex-shrink-0">
+    //                 <a
+    //                   href="cards.html"
+    //                   class="btn d-block w-100 d-sm-inline-block btn-light"
+    //                   >Go to ${name}</a
+    //                 >
+    //               </div>
+    //     </div>
+    // </div>
+    // </div>
+    // `;
 
-    //
+    //   const items = response.data
+    //       .map(element => {
+    //           const image = element["21"].value;
+    //           const phone = element["17"].value;
+    //           const name = element["6"].value && element["6"].value.name;
+    //           const qrcode = element["15"].value;
 
-    // document.getElementById("rep-img").innerHTML = image;
-    // document.getElementById("li").innerHTML = name;
-    // document.getElementById("qrcode").innerHTML = qrcode;
-    // document.getElementById("phone").innerHTML = phone;
+    //           return listElement(image, name, phone);
+    //       })
+    //       .join("");
 
-    const listElement = (image, name, phone) => `
-
-    <div class="row flex-row p-3">
-    <div
-       class="job-box img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex"
-       >
-       ${image}
-       </div>
-       <div class="job-content">
-       <h5 class="text-center text-md-left">${name}</h5>
-       <span class="taghome tag-teal my-2">${phone}</span>
-       <div class="job-right my-4 flex-shrink-0">
-                  <a
-                    href="cards.html"
-                    class="btn d-block w-100 d-sm-inline-block btn-light"
-                    >Go to ${name}</a
-                  >
-                </div>
-       </div>
-   </div>
-   </div>
-   `;
-
-    const items = response.data
-      .map(element => {
-        const image = element["21"].value;
-        const phone = element["17"].value;
-        const name = element["6"].value && element["6"].value.name;
-        const qrcode = element["15"].value;
-
-        return listElement(image, name, phone);
-      })
-      .join("");
-
-    document.getElementById("filter-result").innerHTML = items;
-
-    console.log(Object.values(response));
+    document.getElementById("filter-result").innerHTML = html;
   }
 };
 xmlHttp.send(JSON.stringify(body));
