@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get("id");
@@ -11,17 +12,42 @@ var body = {
   from: "bsazkzsm2",
   select: [6, 15, 16, 17, 21, 42],
   where: "{42.EX.'" + id + "'}"
+=======
+var headers = {
+  "QB-Realm-Hostname": "gosales.quickbase.com",
+  // "User-Agent": "FileService_Integration_V2.1",
+  Authorization: "b4zk43xsngt3xd7ximtbdbxycvc",
+  "Content-Type": "application/json"
+};
+
+var body = {
+  from: "bsazkzsm2",
+  select: [6, 15, 17, 21],
+  // where: "{33.CT.'6789'}",
+  where: "{33.CT.'12345'}",
+  sortBy: [{ fieldId: 3, order: "ASC" }],
+  //   groupBy: [{ fieldId: 33, grouping: "equal-values" }],
+  options: { skip: 0, top: 0, compareWithAppLocalTime: false }
+>>>>>>> ebf58ebe1b5faa2988f4025059fb10a4d4c2ee64
 };
 
 const xmlHttp = new XMLHttpRequest();
 
 xmlHttp.open("POST", "https://api.quickbase.com/v1/records/query", true);
+<<<<<<< HEAD
 for (const key in headers) {
   xmlHttp.setRequestHeader(key, headers[key]);
+=======
+
+for (const key in headers) {
+  xmlHttp.setRequestHeader(key, headers[key]);
+  // xmlHttp.setRequestHeader("Accept", "application/json");
+>>>>>>> ebf58ebe1b5faa2988f4025059fb10a4d4c2ee64
 }
 
 xmlHttp.onreadystatechange = function() {
   if (xmlHttp.readyState === XMLHttpRequest.DONE) {
+<<<<<<< HEAD
     const response = JSON.parse(xmlHttp.response);
     if (response.data) {
       var item = response.data[0];
@@ -106,3 +132,12 @@ $("#testform").on("submit", function(e) {
     xmlHttp.send(JSON.stringify(body));
   }
 });
+=======
+    // console.log(xmlHttp.responseText);
+    console.log(JSON.parse(xmlHttp.response));
+    const response = JSON.parse(xmlHttp.response);
+  }
+};
+
+xmlHttp.send(JSON.stringify(body));
+>>>>>>> ebf58ebe1b5faa2988f4025059fb10a4d4c2ee64
