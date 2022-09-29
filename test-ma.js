@@ -1,6 +1,5 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-<<<<<<< HEAD
 const id = urlParams.get('id');
 var data = localStorage.getItem("data");
 var headers = {
@@ -14,19 +13,6 @@ var body = {
         6, 15, 16, 17, 21, 42
     ],
     "where": "{42.EX.'" + id + "'}"
-=======
-const id = urlParams.get("id");
-var data = localStorage.getItem("data");
-var headers = {
-  "QB-Realm-Hostname": "gosales.quickbase.com",
-  Authorization: "b4zk43xsngt3xd7ximtbdbxycvc",
-  "Content-Type": "application/json"
-};
-var body = {
-  from: "bsazkzsm2",
-  select: [6, 15, 16, 17, 21, 42],
-  where: "{42.EX.'" + id + "'}"
->>>>>>> ebf58ebe1b5faa2988f4025059fb10a4d4c2ee64
 };
 
 const xmlHttp = new XMLHttpRequest();
@@ -34,7 +20,6 @@ const xmlHttp = new XMLHttpRequest();
 xmlHttp.open("POST", "https://api.quickbase.com/v1/records/query", true);
 
 for (const key in headers) {
-<<<<<<< HEAD
     xmlHttp.setRequestHeader(key, headers[key]);
 }
 
@@ -59,28 +44,6 @@ xmlHttp.onreadystatechange = function() {
             document.getElementById("review_btn").href = herf;
         }
     }
-=======
-  xmlHttp.setRequestHeader(key, headers[key]);
-}
-
-xmlHttp.onreadystatechange = function() {
-  if (xmlHttp.readyState === XMLHttpRequest.DONE) {
-    const response = JSON.parse(xmlHttp.response);
-    if (response.data) {
-      var item = response.data[0];
-      var name = item[6].value ? item[6].value.name : "";
-      var email = item[6].value ? item[6].value.email : "";
-      var image = item[21].value ? item[21].value : "";
-      var phone = item[17].value ? item[17].value : "";
-      var qrcode = item[15].value ? item[15].value : "";
-
-      document.getElementById("rep-img").innerHTML = image;
-      document.getElementById("rep-name").innerHTML = name;
-      document.getElementById("qrcode").innerHTML = qrcode;
-      document.getElementById("phone").innerHTML = phone;
-    }
-  }
->>>>>>> ebf58ebe1b5faa2988f4025059fb10a4d4c2ee64
 };
 xmlHttp.send(JSON.stringify(body));
 
@@ -93,8 +56,4 @@ xmlHttp.send(JSON.stringify(body));
 //     document.getElementById("rep-name").innerHTML = filter_data.name;
 //     document.getElementById("qrcode").innerHTML = filter_data.qrcode;
 //     document.getElementById("phone").innerHTML = filter_data.phone;
-<<<<<<< HEAD
 // }
-=======
-// }
->>>>>>> ebf58ebe1b5faa2988f4025059fb10a4d4c2ee64
